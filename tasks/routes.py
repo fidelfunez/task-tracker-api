@@ -18,7 +18,7 @@ task_update_schema = TaskUpdateSchema()
 def get_tasks():
     """Get all tasks for the current user"""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         
         # Query parameters for filtering and pagination
         page = request.args.get('page', 1, type=int)

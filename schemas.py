@@ -23,7 +23,7 @@ class UserRegistrationSchema(Schema):
     )
     
     @validates('password')
-    def validate_password(self, value):
+    def validate_password(self, value, **kwargs):
         """Validate password strength"""
         if not re.search(r'[A-Za-z]', value):
             raise ValidationError('Password must contain at least one letter')
@@ -48,18 +48,18 @@ class TaskCreateSchema(Schema):
         validate=validate.Length(min=1, max=200, error="Title must be between 1 and 200 characters")
     )
     description = fields.Str(
-        missing='',
+        load_default='',
         validate=validate.Length(max=1000, error="Description must be less than 1000 characters")
     )
     due_date = fields.Str(
-        missing=None,
+        load_default=None,
         allow_none=True,
         validate=validate.Regexp(
             r'^\d{4}-\d{2}-\d{2}$',
             error="Due date must be in YYYY-MM-DD format"
         )
     )
-    completed = fields.Bool(missing=False)
+    completed = fields.Bool(load_default=False)
 
 class TaskUpdateSchema(Schema):
     """Schema for task update validation"""

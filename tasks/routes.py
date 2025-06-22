@@ -68,7 +68,7 @@ def get_tasks():
 def create_task():
     """Create a new task for the current user"""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         
         # Get JSON data from request
         json_data = request.get_json()
@@ -117,7 +117,7 @@ def create_task():
 def get_task(task_id):
     """Get a specific task by ID"""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         
         # Find task and ensure it belongs to current user
         task = Task.query.filter_by(id=task_id, user_id=current_user_id).first()
@@ -138,7 +138,7 @@ def get_task(task_id):
 def update_task(task_id):
     """Update a specific task"""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         
         # Find task and ensure it belongs to current user
         task = Task.query.filter_by(id=task_id, user_id=current_user_id).first()
@@ -195,7 +195,7 @@ def update_task(task_id):
 def delete_task(task_id):
     """Delete a specific task"""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         
         # Find task and ensure it belongs to current user
         task = Task.query.filter_by(id=task_id, user_id=current_user_id).first()
@@ -223,7 +223,7 @@ def delete_task(task_id):
 def get_task_stats():
     """Get task statistics for the current user"""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         
         # Get task counts
         total_tasks = Task.query.filter_by(user_id=current_user_id).count()

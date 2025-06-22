@@ -22,6 +22,7 @@ class Config:
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'jwt-secret-string')
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
     JWT_ALGORITHM = 'HS256'
+    JWT_CSRF_IN_COOKIES = False
     
     # Flask configuration
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')

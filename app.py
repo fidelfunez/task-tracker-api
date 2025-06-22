@@ -81,6 +81,15 @@ def create_app():
     def missing_token_callback(error):
         return jsonify({'error': 'Authorization required', 'message': 'Request does not contain an access token'}), 401
     
+    # Root endpoint redirect
+    @app.route('/')
+    def index():
+        return jsonify({
+            'message': 'Task Tracker API',
+            'version': '1.0.0',
+            'api_endpoint': '/api'
+        })
+    
     # API info endpoint
     @app.route('/api')
     def api_info():

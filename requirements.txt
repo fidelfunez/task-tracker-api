@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+Flask-JWT-Extended
+marshmallow
+marshmallow-sqlalchemy
+python-dotenv
+gunicorn

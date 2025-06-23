@@ -5,3 +5,5 @@ marshmallow
 marshmallow-sqlalchemy
 python-dotenv
 gunicorn
+flask_bcrypt
+
